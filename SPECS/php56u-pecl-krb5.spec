@@ -29,14 +29,14 @@ Requires(postun): %{php_base}-pear
 Requires:     %{php_base}(zend-abi) = %{php_zend_api}
 Requires:     %{php_base}(api) = %{php_core_api}
 
-Provides:     php-%{pecl_name} = %{version}
-Provides:     php-%{pecl_name}%{?_isa} = %{version}
-Provides:     php-pecl(%{pecl_name}) = %{version}
-Provides:     php-pecl(%{pecl_name})%{?_isa} = %{version}
-Provides:     %{php_base}-%{pecl_name} = %{version}
-Provides:     %{php_base}-%{pecl_name}%{?_isa} = %{version}
-Provides:     %{php_base}-pecl(%{pecl_name}) = %{version}
-Provides:     %{php_base}-pecl(%{pecl_name})%{?_isa} = %{version}
+Provides:     php-%{pecl_name} = %{version}-%{release}
+Provides:     php-%{pecl_name}%{?_isa} = %{version}-%{release}
+Provides:     php-pecl(%{pecl_name}) = %{version}-%{release}
+Provides:     php-pecl(%{pecl_name})%{?_isa} = %{version}-%{release}
+Provides:     %{php_base}-%{pecl_name} = %{version}-%{release}
+Provides:     %{php_base}-%{pecl_name}%{?_isa} = %{version}-%{release}
+Provides:     %{php_base}-pecl(%{pecl_name}) = %{version}-%{release}
+Provides:     %{php_base}-pecl(%{pecl_name})%{?_isa} = %{version}-%{release}
 
 Provides:     %{real_name} = %{version}
 Conflicts:    %{real_name} < %{version}
