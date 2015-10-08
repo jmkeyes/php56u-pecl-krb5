@@ -1,1 +1,6 @@
-/krb5-1.0.0.tgz
+BUILD
+BUILDROOT
+MOCK
+RPMS
+SOURCES/*.tar.gz
+SRPMS
