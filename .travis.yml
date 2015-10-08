@@ -1,0 +1,27 @@
+language: c
+sudo: false
+addons:
+  apt:
+    packages:
+     - rpm
+     - php-pear
+     - php5-cli
+     - php5-dev
+     - libkrb5-dev
+     - comerr-dev
+compiler:
+  - gcc
+install:
+  - mkdir -p BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
+  - export VERSION=$(awk '/^Version:/{print $2}' SPECS/php56u-pecl-krb5.spec)
+  - wget -O "SOURCES/krb5-${VERSION}.tgz" "http://pecl.php.net/get/krb5-${VERSION}.tgz"
+script: |
+  rpmbuild \
+    -D "_topdir $(pwd)" \
+    -D "php_extdir  $(php-config --extension-dir 2>/dev/null || echo 'undefined')" \
+    -D "php_incldir $(php-config --include-dir 2>/dev/null || echo 'undefined')" \
+    -D "pecl_phpdir  $(pecl config-get php_dir 2>/dev/null || echo 'undefined')" \
+    -D "pecl_docdir $(pecl config-get doc_dir 2>/dev/null || echo 'undefined')" \
+    -D "pecl_testdir $(pecl config-get test_dir 2>/dev/null || echo 'undefined')" \
+    -D "pecl_xmldir %{pecl_phpdir}/.pkgxml" \
+    --nodeps -ba SPECS/php56u-pecl-krb5.spec
